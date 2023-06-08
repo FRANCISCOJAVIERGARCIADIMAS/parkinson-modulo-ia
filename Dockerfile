@@ -1,6 +1,5 @@
-# Dockerfile
-
-FROM python:3.8
+# Seleccionar la imagen base de Docker
+FROM python:3.10-slim-buster
 
 WORKDIR /app
 
@@ -15,8 +14,8 @@ EXPOSE 5000
 COPY . .
 
 # Establecer el comando para ejecutar tu aplicación Flask
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD [ "python3", "-m" , "flask", "run", "host=0.0.0.0"]
 
 # Establecer el nombre de la imagen y contenedor
-LABEL image="parkinson-drawing-classifier"
-LABEL container="parkinson-drawing-classifier-container"
+LABEL image="parkinson-r-n-a-m"
+LABEL container="parkinson-r-n-a-m"
