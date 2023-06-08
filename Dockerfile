@@ -1,5 +1,6 @@
-# Seleccionar la imagen base de Docker
-FROM python:3.10-slim-buster
+# Dockerfile
+
+FROM python:3.8
 
 WORKDIR /app
 
@@ -7,15 +8,6 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Exponer el puerto de Flask
-EXPOSE 7291
-
-# Copiar el resto de archivos
 COPY . .
 
-# Establecer el comando para ejecutar tu aplicación Flask
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
-
-# Establecer el nombre de la imagen y contenedor
-LABEL image="parkinson-r-n-a-m"
-LABEL container="parkinson-r-n-a-m"
+CMD ["python", "app.py"]  # Reemplaza "app-11.py" con el nombre del archivo principal de tu proyecto
