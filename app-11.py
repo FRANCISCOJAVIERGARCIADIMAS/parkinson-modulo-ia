@@ -73,6 +73,10 @@ tree_rules = export_text(dtc, feature_names=X.columns.tolist())
 #     return jsonify({"Hola": "mundo!"})
 
 
+@app.route('/hola-mundo')
+def hola_mundo():
+    return jsonify({"Hola": "mundo!"})
+
 # Arbol con id Terminales
 # @app.route('/tree-tag')
 # def tree_tag():
@@ -465,6 +469,6 @@ def insertar_registro(idMensaje, idPaciente, idMedico):
 
 # ============================================================
 # ======================================== RUN ===============
-
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, port=5000)
+    app.run(host='0.0.0.0', debug=False)
+
