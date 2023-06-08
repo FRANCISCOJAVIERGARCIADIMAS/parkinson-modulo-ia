@@ -1,7 +1,0 @@
-# railway.yaml
-
-env: python
-scripts:
-  - npm install
-  - pip install -r requirements.txt
-start: python app-11.py  # Reemplaza "your_script.py" con el nombre del archivo principal de tu proyecto
