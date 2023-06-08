@@ -21,6 +21,8 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app, origins='*', methods=['GET', 'POST', 'PUT', 'DELETE'])
 
+port = int(os.environ.get('PORT', 5000))
+
 # leer el archivo CSV de entrenamiento
 data = pd.read_csv("training-2.csv")
 
@@ -474,5 +476,5 @@ def insertar_registro(idMensaje, idPaciente, idMedico):
 # ============================================================
 # ======================================== RUN ===============
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=port)
 
