@@ -6,12 +6,12 @@ from sklearn import metrics
 from joblib import dump, load
 import os.path
 from sklearn.tree import export_graphviz
-import graphviz
+# import graphviz
 from flask import Flask
 from flask_cors import CORS
 import requests
 import json
-from twilio.rest import Client
+# from twilio.rest import Client
 
 # Mysql
 import mysql.connector
@@ -59,43 +59,43 @@ tree_rules = export_text(dtc, feature_names=X.columns.tolist())
 
 
 # exportar el árbol de decisión en formato Graphviz
-dot_data = export_graphviz(dtc, out_file=None, filled=True, rounded=True,
-                                feature_names=X.columns.tolist(),
-                                class_names=['Parkinson', 'Sano'])
-graph = graphviz.Source(dot_data)
+# dot_data = export_graphviz(dtc, out_file=None, filled=True, rounded=True,
+#                                 feature_names=X.columns.tolist(),
+#                                 class_names=['Parkinson', 'Sano'])
+# graph = graphviz.Source(dot_data)
 
 # ================================= DEFAULT =====================================
 
-@app.route('/mi-ruta')
-def mi_vista():
-    print(tree_rules)
-    graph.render('arbol', format='png')
-    return jsonify({"Hola": "mundo!"})
+# @app.route('/mi-ruta')
+# def mi_vista():
+#     print(tree_rules)
+#     graph.render('arbol', format='png')
+#     return jsonify({"Hola": "mundo!"})
 
 
 # Arbol con id Terminales
-@app.route('/tree-tag')
-def tree_tag():
-    print_tree(dtc, X.columns.tolist())
-    # print(tree_rules)
-    return jsonify({"tree": "tag"})
+# @app.route('/tree-tag')
+# def tree_tag():
+#     print_tree(dtc, X.columns.tolist())
+#     # print(tree_rules)
+#     return jsonify({"tree": "tag"})
 
 
 # generar una representación de texto del árbol generado, agregando "(TERMINAL)" y el identificador de nodo a los nodos terminales
-def print_tree(dtc, feature_names):
-    r = export_text(dtc, feature_names=feature_names).split('\n')
-    new_r = []
-    node_id = 0
-    for s in r:
-        if s.strip():
-            if 'class' in s:
-                s = s.replace('class', f'class (TERMINAL, {node_id})')
-                node_id += 1
-            else:
-                s = f'[{node_id}] {s}'
-                node_id += 1
-            new_r.append(s)
-    print("\n".join(new_r))
+# def print_tree(dtc, feature_names):
+#     r = export_text(dtc, feature_names=feature_names).split('\n')
+#     new_r = []
+#     node_id = 0
+#     for s in r:
+#         if s.strip():
+#             if 'class' in s:
+#                 s = s.replace('class', f'class (TERMINAL, {node_id})')
+#                 node_id += 1
+#             else:
+#                 s = f'[{node_id}] {s}'
+#                 node_id += 1
+#             new_r.append(s)
+#     print("\n".join(new_r))
 
 
 

@@ -2,7 +2,5 @@ pandas
 scikit-learn
 flask
 joblib
-graphviz
 flask_cors
-twilio
 mysql-connector-python
