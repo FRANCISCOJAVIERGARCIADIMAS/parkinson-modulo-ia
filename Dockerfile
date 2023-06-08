@@ -14,7 +14,7 @@ EXPOSE 5000
 COPY . .
 
 # Establecer el comando para ejecutar tu aplicación Flask
-CMD [ "python3", "-m" , "flask", "run", "host=0.0.0.0"]
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
 
 # Establecer el nombre de la imagen y contenedor
 LABEL image="parkinson-r-n-a-m"
