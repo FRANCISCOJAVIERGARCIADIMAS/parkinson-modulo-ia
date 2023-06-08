@@ -77,6 +77,11 @@ tree_rules = export_text(dtc, feature_names=X.columns.tolist())
 def hola_mundo():
     return jsonify({"Hola": "mundo!"})
 
+
+@app.route("/")
+def index():
+    return "<h1>Hello!</h1>"
+
 # Arbol con id Terminales
 # @app.route('/tree-tag')
 # def tree_tag():
@@ -469,5 +474,7 @@ def insertar_registro(idMensaje, idPaciente, idMedico):
 
 # ============================================================
 # ======================================== RUN ===============
-if __name__ == "__main__": from waitress import serve serve(app, host="0.0.0.0", port=8080)
+if __name__ == "__main__": 
+    from waitress import serve serve
+    (app, host="0.0.0.0", port=8080)
 
