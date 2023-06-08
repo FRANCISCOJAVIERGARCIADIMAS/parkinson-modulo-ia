@@ -10,4 +10,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python", "app-11.py"]  
+# Copiar el resto de archivos
+COPY . .
+
+# Establecer el comando para ejecutar tu aplicación Flask
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
