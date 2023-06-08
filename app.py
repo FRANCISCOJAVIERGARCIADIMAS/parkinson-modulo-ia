@@ -21,7 +21,7 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app, origins='*', methods=['GET', 'POST', 'PUT', 'DELETE'])
 
-port = int(os.environ.get('PORT'))
+port = int(os.environ.get('PORT', 7291))
 print("PORT RAIL:", port )
 # leer el archivo CSV de entrenamiento
 data = pd.read_csv("training-2.csv")
