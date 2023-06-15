@@ -14,9 +14,9 @@ import json
 # from twilio.rest import Client
 
 # Mysql
-import mysql.connector
-from mysql.connector import Error
-from datetime import datetime
+# import mysql.connector
+# from mysql.connector import Error
+# from datetime import datetime
 
 app = Flask(__name__)
 CORS(app, origins='*', methods=['GET', 'POST', 'PUT', 'DELETE'])
@@ -179,7 +179,6 @@ def predecir():
     msg = resultado['msg']
 
     enviar_notificacion(type, title, msg)
-    insertar_registro(idM, 3, 2)
     # enviar_whatsapp()
     return jsonify(respuesta)
 
@@ -348,7 +347,6 @@ def predecir_trazos():
     }
 
     enviar_notificacion(type, title, msg)
-    insertar_registro(idM, 3, 2)
 
     return jsonify(respuesta)
 
@@ -428,44 +426,44 @@ def enviar_whatsapp():
 
 # =========================insertar el registro =================
 
-def insertar_registro(idMensaje, idPaciente, idMedico):
-    idPacienteX = 6
-    idMedicoX = 2
-    try:
-        # Conexión a la base de datos
-        connection = mysql.connector.connect(
-            host='preventsoft.com ',
-            port=3306,
-            user='jalorhco_antonio',
-            password='minayork1985!',
-            database='jalorhco_modulo'
-        )
+# def insertar_registro(idMensaje, idPaciente, idMedico):
+#     idPacienteX = 6
+#     idMedicoX = 2
+#     try:
+#         # Conexión a la base de datos
+#         connection = mysql.connector.connect(
+#             host='preventsoft.com ',
+#             port=3306,
+#             user='jalorhco_antonio',
+#             password='minayork1985!',
+#             database='jalorhco_modulo'
+#         )
 
-        # Crear el cursor
-        cursor = connection.cursor()
+#         # Crear el cursor
+#         cursor = connection.cursor()
 
-        # Obtener la fecha actual del sistema
-        fecha = datetime.now()
+#         # Obtener la fecha actual del sistema
+#         fecha = datetime.now()
 
-        # Insertar el registro en la tabla
-        query = "INSERT INTO `BUZON.PROC.MENSAJES` (fecha, idMensaje, idPaciente, idMedico, estado) VALUES (%s, %s, %s, %s, %s)"
-        values = (fecha, idMensaje, idPacienteX, idMedicoX, 1)  # estado por defecto en 1
+#         # Insertar el registro en la tabla
+#         query = "INSERT INTO `BUZON.PROC.MENSAJES` (fecha, idMensaje, idPaciente, idMedico, estado) VALUES (%s, %s, %s, %s, %s)"
+#         values = (fecha, idMensaje, idPacienteX, idMedicoX, 1)  # estado por defecto en 1
 
-        cursor.execute(query, values)
+#         cursor.execute(query, values)
 
-        # Confirmar los cambios en la base de datos
-        connection.commit()
+#         # Confirmar los cambios en la base de datos
+#         connection.commit()
 
-        print("REGISTRO insertado correctamente")
+#         print("REGISTRO insertado correctamente")
 
-    except Error as e:
-        print("Error al insertar el registro:", e)
+#     except Error as e:
+#         print("Error al insertar el registro:", e)
 
-    finally:
-        # Cerrar el cursor y la conexión a la base de datos
-        if connection.is_connected():
-            cursor.close()
-            connection.close()
+#     finally:
+#         # Cerrar el cursor y la conexión a la base de datos
+#         if connection.is_connected():
+#             cursor.close()
+#             connection.close()
 
 
 
