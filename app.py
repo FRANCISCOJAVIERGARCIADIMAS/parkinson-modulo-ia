@@ -178,7 +178,7 @@ def predecir():
     type = resultado['type']
     msg = resultado['msg']
 
-    enviar_notificacion(type, title, msg)
+    # enviar_notificacion(type, title, msg)
     # enviar_whatsapp()
     return jsonify(respuesta)
 
@@ -346,7 +346,7 @@ def predecir_trazos():
         }
     }
 
-    enviar_notificacion(type, title, msg)
+    # enviar_notificacion(type, title, msg)
 
     return jsonify(respuesta)
 
@@ -355,7 +355,6 @@ def predecir_trazos():
 
 # +++++++++++++++++++++++++++++++++ ENVIO DE NOTIFICACION PUSH
 def enviar_notificacion(type, title, msg):
-
     imgType = ''
     # Validar el tipo de mensaje
     if type == "Recomendación":
@@ -368,12 +367,8 @@ def enviar_notificacion(type, title, msg):
         imgType = 'https://cdn-icons-png.flaticon.com/512/893/893257.png'
     else:
         imgType = 'https://cdn-icons-png.flaticon.com/512/893/893257.png'
-
-
-
     # Definir la URL del EndPoint
     url = "https://fcm.googleapis.com/fcm/send"
-
     # Definir los encabezados
     headers = {
         "Content-Type": "application/json",
